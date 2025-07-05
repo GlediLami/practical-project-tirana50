@@ -17,6 +17,13 @@ public class ForecastService {
         String uri = ApplicationConstants.API_BASE_URL + "/forecasts/v1/daily/1day/" + cityId + "?apikey=" + ApplicationConstants.API_KEY + "&metric=true";
         String response = httpClientService.getRequest(uri);
 
+        ForecastDto forecastDto = convertToDto(response);
+
+        System.out.println("Forecast for city: " + cityId + " => " + forecastDto);
+        return forecastDto;
+    }
+
+    private static ForecastDto convertToDto(String response) {
         ObjectMapper mapper = new ObjectMapper();
         ForecastDto forecastDto = new ForecastDto();
         try {
@@ -24,8 +31,6 @@ public class ForecastService {
         } catch (Exception e){
             System.out.println("Error: " + e);
         }
-
-        System.out.println("Forecast for city: " + cityId + " => " + forecastDto);
         return forecastDto;
     }
 
