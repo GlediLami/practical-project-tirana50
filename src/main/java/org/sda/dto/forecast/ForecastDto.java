@@ -1,10 +1,9 @@
-package org.sda.dto;
+package org.sda.dto.forecast;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 

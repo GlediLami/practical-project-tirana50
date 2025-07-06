@@ -1,4 +1,4 @@
-package org.sda.dto;
+package org.sda.dto.forecast;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

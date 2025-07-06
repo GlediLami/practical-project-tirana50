@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 
 public class HttpClientService {
 
-    public String getRequest(String url){
+    public static String getRequest(String url){
         HttpClient client = HttpClient.newHttpClient();
 
         // Create HTTP GET Request
