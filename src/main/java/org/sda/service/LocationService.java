@@ -1,6 +1,5 @@
 package org.sda.service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import org.sda.dto.location.CityDto;
 import org.sda.dto.location.CountryDto;
 import org.sda.dto.location.RegionDto;
@@ -22,7 +21,7 @@ public class LocationService {
 
     public static void main(String[] args) {
         LocationService locationService = new LocationService();
-        locationService.getAllCitiesOfCountry("AL");
+        System.out.println(locationService.doesCityExist("4552"));
     }
 
     public List<CountryDto> getAllCountriesOfRegion(String regionId) {
@@ -40,9 +39,20 @@ public class LocationService {
         return cityDtos;
     }
 
-//    public City getCityDetails(String cityId){}
+    public CityDto getCityDetails(String cityId){
+        String response = HttpClientService.getRequest(ApplicationConstants.API_BASE_URL + "/locations/v1/" + cityId + "9999?apikey=" + ApplicationConstants.API_KEY);
+        CityDto city = JsonConverterService.convertToDto(response, CityDto.class);
+
+        System.out.println(city);
+
+        return city;
+    }
+
 //
-//    public boolean doesCityExist(String cityId){}
+    public boolean doesCityExist(String cityId){
+        CityDto city = this.getCityDetails(cityId);
+        return city != null;
+    }
 //
 //    // OTHER METHODS AS NEEDED
 }

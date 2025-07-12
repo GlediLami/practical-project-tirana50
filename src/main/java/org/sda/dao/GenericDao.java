@@ -2,14 +2,14 @@ package org.sda.dao;
 
 import java.util.List;
 
-public interface GenericDao {
-    public <T> void save(T t);
+public interface GenericDao<T> {
+    public  void save(T t);
 
-    public <T> T getById(Long id);
+    public  T getById(Long id);
 
-    public <T> List<T> getAll();
+    public  List<T> getAll();
 
-    public <T> void merge(T t);
+    public  void merge(T t);
 
-    public <T> void delete(Long id);
+    public  void delete(Long id);
 }

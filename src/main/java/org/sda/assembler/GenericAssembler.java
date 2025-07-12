@@ -1,5 +1,5 @@
 package org.sda.assembler;
 
-public interface GenericAssembler {
-    public <T,U> T assemble(U u);
+public interface GenericAssembler<T,U> {
+    public T assemble(U u);
 }

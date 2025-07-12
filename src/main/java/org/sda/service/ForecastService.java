@@ -33,7 +33,7 @@ public class ForecastService {
         return forecastDto.getDailyForecastDtos();
     }
 
-    public void showAverageTemperatureForFifteenDays(String cityId){
+    public void showAverageTemperatureForFiveDays(String cityId){
         List<DailyForecastDto> forecastDtos = getForecastForFiveDay(cityId);
         double average = 0;
 
@@ -42,7 +42,7 @@ public class ForecastService {
                     forecast.getTemperature().getMinimum().getValue() ) / 2;
         }
 
-        average = average / forecastDtos.size();
+        average /= forecastDtos.size();
 
         System.out.println("Average temperature for 5 days is: " + average);
 
@@ -50,7 +50,7 @@ public class ForecastService {
 
     public static void main(String[] args) {
         ForecastService forecastService = new ForecastService();
-        forecastService.showAverageTemperatureForFifteenDays("4552");
+        forecastService.getForecastForOneDay("4552");
     }
 
 }

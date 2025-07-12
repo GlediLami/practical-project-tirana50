@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 public class CityDto {
 
-    @JsonProperty("ID")
+    @JsonProperty("Key")
     private String cityId;
 
     @JsonProperty("LocalizedName")
