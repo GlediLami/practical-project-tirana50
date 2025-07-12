@@ -1,25 +1,28 @@
 package org.sda.dto.forecast;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.ToString;
+
+import java.time.OffsetDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString
 public class DailyForecastDto {
 
     @JsonProperty("Date")
-    private String date; // You can also use LocalDateTime with custom deserializer
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX") // matches 2025‑07‑16T07:00:00+02:00
+    private OffsetDateTime date;
 
     @JsonProperty("Temperature")
     private TemperatureDto temperature;
 
-    // Getters and setters
-    public String getDate() {
+    public OffsetDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(OffsetDateTime date) {
         this.date = date;
     }
 

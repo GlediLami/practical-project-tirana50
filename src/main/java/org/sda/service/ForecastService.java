@@ -1,7 +1,7 @@
 package org.sda.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.sda.dto.forecast.DailyForecastDto;
+import org.sda.dto.forecast.ForecastCityDto;
 import org.sda.dto.forecast.ForecastDto;
 import org.sda.util.ApplicationConstants;
 import org.sda.util.HttpClientService;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ForecastService {
 
-    public DailyForecastDto getForecastForOneDay(String cityId){
+    public ForecastCityDto getForecastForOneDay(String cityId){
         String uri = ApplicationConstants.API_BASE_URL + "/forecasts/v1/daily/1day/" + cityId + "?apikey=" + ApplicationConstants.API_KEY + "&metric=true";
         String response = HttpClientService.getRequest(uri);
 
@@ -19,7 +19,7 @@ public class ForecastService {
 
         System.out.println("Forecast for city: " + cityId + " => " + forecastDto);
 
-        return forecastDto.getDailyForecastDtos().getFirst();
+        return new ForecastCityDto(forecastDto, cityId);
     }
 
     public List<DailyForecastDto> getForecastForFiveDay(String cityId){
